@@ -1,7 +1,7 @@
 # modularity_metric
 ## Requirements
 * gensim
-* (optional) annoy
+* (optional) [annoy](https://github.com/spotify/annoy)
 ```
     pip3 install -r requirements.txt
 ```
@@ -17,10 +17,10 @@ Confirmed that it runs on
 ```
 
 ## References
-Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, A better way to diagnose poorly-mixed cross-lingual embeddings: A resource-free graph-based evaluation metric, ACL 2019
+Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity, ACL 2019
 ```
 @inproceedings{clwe_modularity,
-   title = "A better way to diagnose poorly-mixed cross-lingual embeddings: a resource-free graph-based evaluation metric",
+   title = "A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity",
    author = "Fujinuma, Yoshinari AND Boyd-Graber, Jordan AND Paul, Michael J.",
    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
    year = "2019",
