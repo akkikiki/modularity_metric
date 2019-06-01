@@ -1,4 +1,6 @@
 # modularity_metric
+An adhoc tool/metric to diagnose whether the resulting cross-lingual word embedding is ``mixed'' w.r.t to its language. 
+
 ## Requirements
 * gensim
 * (optional) [annoy](https://github.com/spotify/annoy)
