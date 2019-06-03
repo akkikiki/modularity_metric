@@ -39,3 +39,37 @@ def add_neighbors(A, TOPN, model, word_indice_dic, annoy_index=None):
             A[indice, target_indice] = max(cos_sim, 0.0)
             A[target_indice, indice] = max(cos_sim, 0.0)
             finished += 1
+
+
+def build_subgraph(seed_words, w2v_filename, TOPN, A_name, indice2word_filename, dim):
+    A, indice2word, model, word_indice_dic = graph_setup(dim, w2v_filename)
+
+    #Obtain k-NN
+    finished = 0
+    for word in seed_words:
+        if not word in word_indice_dic:
+            print("%s is OOV" % word)
+            continue
+        indice = word_indice_dic[word]
+        for sim_word, cos_sim in model.most_similar(positive=[word], topn=TOPN):
+            print(sim_word, "%.2f" % cos_sim)
+            target_indice = word_indice_dic[sim_word]
+            if indice == target_indice: continue # avoid adding self-loops
+            A[indice, target_indice] = max(cos_sim, 0.0)
+            A[target_indice, indice] = max(cos_sim, 0.0)
+        finished += 1
+
+    save_sparse_csr(A_name, A.tocsr())
+    pickle.dump(indice2word, open(indice2word_filename , "wb" ))
+
+
+def graph_setup(dim, w2v_filename):
+    # Reading word vector
+    model = read_w2v(w2v_filename, dim)
+    V = len(model.wv.vocab)
+    print("Num. vocab = %i" % V)
+    # Set up for constructing adjacency matrix
+    word_indice_dic = {word: i for i, word in enumerate(model.wv.vocab)}  # memory size maybe large?
+    indice2word = {i: word for word, i in word_indice_dic.items()}
+    A = dok_matrix((V, V), dtype=np.float32)
+    return A, indice2word, model, word_indice_dic

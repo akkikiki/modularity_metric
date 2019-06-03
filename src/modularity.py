@@ -2,7 +2,7 @@ import argparse
 import numpy as np
 import pickle
 from utils import load_sparse_csr
-from utils_lex_graph import build_graph
+from utils_lex_graph import build_graph, build_subgraph
 
 def calc_weighted_modularity_langs(A_filename, indice2word_filename, langs):
     """
@@ -61,9 +61,9 @@ def calc_weighted_modularity_langs(A_filename, indice2word_filename, langs):
     for i in range(len(a_l)):
         Q += e_ll[i] - (a_l[i] ** 2)
         Q_max += e_ll_Q_max[i] - (a_l[i] ** 2)
-    print("Weighted Q=%.4f" % Q)
-    print("Weighted Q_max=%.4f" % Q_max)
-    print("Normalized Q=%.4f" % (Q/Q_max))
+    print("Weighted Q=%.3f" % Q)
+    print("Weighted Q_max=%.3f" % Q_max)
+    print("Normalized Q=%.3f" % (Q/Q_max))
     return Q/Q_max
 
 
@@ -90,6 +90,10 @@ if __name__ == "__main__":
     parser.add_argument("--topk", type=int, help="k for k-NN graph", default=100)
     parser.add_argument("--annoy", help="Construct an approximate nearest neighbor graph using ANNOY",
                    default=False, action="store_true")
+    parser.add_argument("--firefox", help="Reproduce the example in the paper. Need to have --subraph option on",
+                   default=False, action="store_true")
+    parser.add_argument("--eat", help="Reproduce the example in the paper. Need to have --subgraph option on",
+                   default=False, action="store_true")
     parser.add_argument("--subgraph", help="Compute modularity on a nearest neighbor graph built from a subset of vocabularies",
                        default=False, action="store_true")
     parser.add_argument("--tree_num", help="Num. of trees used to get approximated nearest neighbors",
@@ -101,7 +105,15 @@ if __name__ == "__main__":
 
     A_name = args.save_dir + "A.npy.npz"
     indice2word_name = args.save_dir + "indice2word.pickle"
-    build_graph(args.w2v, args.topk, A_name, indice2word_name, annoy=args.annoy, dim=args.dim, tree_num=args.tree_num)
+
+    if args.subgraph:
+        if args.eat:
+            seed_words = ["eng:eat", "jpn:食べる"]
+        elif args.firefox:
+            seed_words = ["eng:firefox", "jpn:レッサーパンダ"]
+        build_subgraph(seed_words, args.w2v, args.topk, A_name, indice2word_name, args.dim)
+    else:
+        build_graph(args.w2v, args.topk, A_name, indice2word_name, annoy=args.annoy, dim=args.dim, tree_num=args.tree_num)
 
     langs_prefix= [args.src_lang, args.tgt_lang]
 
