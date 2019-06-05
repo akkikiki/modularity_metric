@@ -14,6 +14,15 @@ Confirmed that it runs on
 * annoy 1.8.3
 
 ## Usage
+```
+python3 src/modularity.py --w2v YOUR_VECTOR --src_lang SRC_LANG --tgt_lang TGT_LANG
+```
+Currently, the input vector is assumed to be a concatenated cross-lingual embedding where each word has a prefix tag of three characters (i.e., ISO 639-2 Code), e.g., 
+```
+python3 src/modularity.py --w2v $WORD_VEC --src_lang eng --tgt_lang jpn
+```
+and an example of a word vector is `eng:the 0.123988 -0.0562252...`. 
+
 ### Run tests
 ```
 sh scripts/run_test.sh
