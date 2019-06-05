@@ -29,6 +29,12 @@ Confirmed that it runs on
     sh scripts/run_sample_annoy.sh
 ```
 
+### Reproduce Figure 1 in the paper
+```
+    sh scripts/get_sample_embedding.sh
+    sh scripts/run_eng_jpn_mse_orth.sh
+```
+
 ## References
 Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity, ACL 2019
 ```
