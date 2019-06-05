@@ -13,9 +13,20 @@ Confirmed that it runs on
 * gensim 3.4.0
 * annoy 1.8.3
 
-## Example Usage
+## Usage
+### Run tests
 ```
-    sh run_sample.sh
+    sh scripts/run_test.sh
+```
+
+### Example usage
+```
+    sh scripts/run_sample.sh
+```
+
+### Example usage with annoy
+```
+    sh scripts/run_sample_annoy.sh
 ```
 
 ## References
