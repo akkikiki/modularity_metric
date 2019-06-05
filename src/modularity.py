@@ -40,10 +40,9 @@ def calc_weighted_modularity_langs(A_filename, indice2word_filename, langs):
         node2_word = indice2word[node2]
         community_id = lang_to_indice[node1_word[:3]]
 
-        #e_ll_Q_max[community_id] += A[node1, node2]
-        e_ll_Q_max[community_id] += 1 # Since 1 is maximum possible weight
+        e_ll_Q_max[community_id] += 1  # 1 is maximum possible weight
         if node1_word[:3] == node2_word[:3]:
-            e_ll[community_id] += A[node1, node2] # counting both directions
+            e_ll[community_id] += A[node1, node2]
         
     check_e_ii_s_Q_max = 0
     for i in range(len(a_l)):

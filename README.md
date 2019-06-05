@@ -16,23 +16,24 @@ Confirmed that it runs on
 ## Usage
 ### Run tests
 ```
-    sh scripts/run_test.sh
+sh scripts/run_test.sh
 ```
 
 ### Example usage
 ```
-    sh scripts/run_sample.sh
+sh scripts/run_sample.sh
 ```
 
 ### Example usage with annoy (approximate nearest neighbors)
 ```
-    sh scripts/run_sample_annoy.sh
+sh scripts/run_sample_annoy.sh
 ```
 
 ### Reproduce Figure 1 in the paper
 ```
-    sh scripts/get_sample_embedding.sh
-    sh scripts/run_eng_jpn_mse_orth.sh
+sh scripts/get_sample_embedding.sh
+sh scripts/run_eat.sh
+sh scripts/run_firefox.sh
 ```
 
 ## References
@@ -40,7 +41,7 @@ Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, A Resource-Free Eva
 ```
 @inproceedings{clwe_modularity,
    title = "A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity",
-   author = "Fujinuma, Yoshinari AND Boyd-Graber, Jordan AND Paul, Michael J.",
+   author = "Fujinuma, Yoshinari and Boyd-Graber, Jordan and Paul, Michael J.",
    booktitle = "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics",
    year = "2019",
 }
