@@ -1,5 +1,5 @@
 # modularity_metric
-An adhoc tool/metric to diagnose whether the resulting cross-lingual word embedding is ``mixed'' w.r.t to its language. 
+An adhoc tool/metric to diagnose whether the resulting cross-lingual word embedding is "mixed" w.r.t to its language. 
 
 ## Requirements
 * gensim
@@ -24,7 +24,7 @@ Confirmed that it runs on
     sh scripts/run_sample.sh
 ```
 
-### Example usage with annoy
+### Example usage with annoy (approximate nearest neighbors)
 ```
     sh scripts/run_sample_annoy.sh
 ```
