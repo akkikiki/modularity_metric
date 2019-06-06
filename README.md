@@ -46,7 +46,9 @@ sh scripts/run_firefox.sh
 ```
 
 ## References
-Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity, ACL 2019
+If you use this code, please cite our paper.
+
+Yoshinari Fujinuma, Jordan Body-Graber, and Michael J. Paul, [A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity](https://arxiv.org/abs/1906.01926), ACL 2019
 ```
 @inproceedings{clwe_modularity,
    title = "A Resource-Free Evaluation Metric for Cross-Lingual Word Embeddings based on Graph Modularity",
